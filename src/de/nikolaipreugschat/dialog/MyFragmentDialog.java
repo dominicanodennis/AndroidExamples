@@ -46,6 +46,10 @@ public class MyFragmentDialog extends DialogFragment {
 		View view = inflater.inflate(R.layout.dialog_layout, container);
 		
 		Button cancel = (Button) view.findViewById(R.id.button_dialog_left);
+		
+		getDialog().setTitle("Passing value dialog");
+		getDialog().setCanceledOnTouchOutside(true);
+		
 		cancel.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -62,10 +66,13 @@ public class MyFragmentDialog extends DialogFragment {
 				Intent intent = new Intent(getActivity(),TargetActivity.class);
 				intent.putExtras(infos);
 				startActivity(intent);
+				getDialog().dismiss();
 			}
 		});
 		
 		
 		return view;
 	}
+	
+	
 }

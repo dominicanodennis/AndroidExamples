@@ -7,3 +7,5 @@ In the next activity the list items value is displayed.
 
 Problem left: prevent DialogFragment to be passed to the BackStack which causes if the user presses
               "back" the dialog to be displayed again.
+
+Note: Don't mind the german comments.

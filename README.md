@@ -11,3 +11,6 @@ Problem left: prevent DialogFragment to be passed to the BackStack which causes 
               has not been dismissed after its work.
 
 Note: Don't mind the german comments.
+	  And of course: please don't just copy and paste! I take no responsibilities what so ever if you use this.
+	  				 And if you are using it please note the reference for even if it is not much work I put into
+	  				 this it is still work.

@@ -6,6 +6,8 @@ Between both activities is a DialogFragment that asks if you want to open the ne
 In the next activity the list items value is displayed.
 
 Problem left: prevent DialogFragment to be passed to the BackStack which causes if the user presses
-              "back" the dialog to be displayed again.
+              "back" the dialog to be displayed again. (solved)
+              My initial thought was wrong. The activity had the dialog still open due to the fact that it
+              has not been dismissed after its work.
 
 Note: Don't mind the german comments.

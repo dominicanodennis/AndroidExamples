@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
     
-    <TextView
-        android:id="@+id/dialog_text"
+    <LinearLayout android:id="@+id/dialog_network_info_layout"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:text="@string/dialog_text"
-        android:textSize="20sp" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="5dp">
+        
+	    <TextView
+	        android:id="@+id/dialog_bssid"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center"
+	        android:text="@string/network_id"
+	        android:textSize="20sp" />
+	    
+	    <TextView
+	        android:id="@+id/dialog_mac_address"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="@string/mac_address"
+	        android:textSize="20sp" />
+	    
+	    <TextView
+	        android:id="@+id/dialog_signal"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:gravity="center_vertical|center_horizontal"
+	        android:text="@string/signal_strength"
+	        android:textSize="20sp" />
+    
+    </LinearLayout>
     
 	<LinearLayout
 	    android:id="@+id/dialog_button_bar"
 	    android:layout_width="match_parent"
 	    android:layout_height="wrap_content"
-	    android:layout_below="@+id/dialog_text"
+	    android:layout_below="@+id/dialog_network_info_layout"
 	    android:orientation="horizontal"
 	    android:weightSum="1" >
 	    

@@ -12,7 +12,7 @@
         android:layout_weight="0.5"
         android:gravity="center"
         android:text="@string/list_item_key_text"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/list_item_value"
@@ -20,6 +20,6 @@
         android:layout_height="match_parent"
         android:layout_weight="0.5"
         android:gravity="center"
-        android:textSize="30sp" />
+        android:textSize="20sp" />
 
 </LinearLayout>

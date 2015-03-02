@@ -1,25 +1,36 @@
 package de.nikolaipreugschat.main;
 
+import de.nikolaipreugschat.adapters.ParcelableScanresult;
+import de.nikolaipreugschat.reciver.MyBroadcastReciever;
+import android.content.Context;
+import android.content.IntentFilter;
+import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.widget.TextView;
+import android.support.v7.app.ActionBarActivity;
 
-public class TargetActivity extends FragmentActivity {
+public class TargetActivity extends ActionBarActivity {
+	
+	MyBroadcastReciever reciever;
+	WifiManager wifiManager;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		setContentView(R.layout.target_layout);
+
+		setContentView(R.layout.target_layout);		
 		
 		Bundle bundle = getIntent().getExtras();
 		
-		String value = (String) bundle.get("inputValue");
+		ParcelableScanresult parcel = bundle.getParcelable("wlan");
 		
-		TextView textView = (TextView) findViewById(R.id.target_data_output);
+		reciever = new MyBroadcastReciever(getCurrentFocus(), this, parcel.getResult());
 		
-		textView.setText("passed value: " + value);
+		wifiManager = (WifiManager) getSystemService(Context.WIFI_SERVICE);
+		
+		reciever.goAsync();
+		
+		registerReceiver(reciever, new IntentFilter(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION));
+		wifiManager.startScan();
 	}
 
 }

@@ -10,5 +10,8 @@
     <string name="target">target</string>
     <string name="target_descr">passed values</string>
     <string name="list_item_key_text">Value:</string>
+    <string name="network_id">Network ID</string>
+    <string name="mac_address">Mac address</string>
+    <string name="signal_strength">Signal strength</string>
 
 </resources>

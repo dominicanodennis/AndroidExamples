@@ -3,11 +3,12 @@ package de.nikolaipreugschat.reciver;
 import java.util.List;
 
 import de.nikolaipreugschat.adapters.MyListAdapter;
+import de.nikolaipreugschat.fragments.MyListFragment;
+import de.nikolaipreugschat.fragments.WifiTrackingFragment;
 import de.nikolaipreugschat.main.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBarActivity;
@@ -17,14 +18,16 @@ import android.widget.Toast;
 
 public class MyBroadcastReciever extends BroadcastReceiver {
 	
-	MyListAdapter listAdapter; // Listenadapter in den die Liste übergeben wird
+	MyListAdapter listAdapter;
 	WifiManager wifiManager;
-	ActionBarActivity activity; // activity um das scope in die Klasse zu überreichen
+	ActionBarActivity activity;
 	View view;
 	ScanResult result;
+	MyListFragment list;
+	WifiTrackingFragment trackingFragment;
 	
-	public MyBroadcastReciever(MyListAdapter listAdapter, ActionBarActivity activity) {
-		this.listAdapter = listAdapter;
+	public MyBroadcastReciever(MyListFragment listFragment, ActionBarActivity activity) {
+		this.list = listFragment;
 		this.activity = activity;
 		wifiManager = (WifiManager) this.activity.getSystemService(Context.WIFI_SERVICE);
 	}
@@ -38,29 +41,23 @@ public class MyBroadcastReciever extends BroadcastReceiver {
 	
 	@Override
 	public void onReceive(Context context, Intent intent) {
-		if (!(listAdapter==null)) {
-			List<ScanResult> results = wifiManager.getScanResults();
+		Toast.makeText(context, "recieved", Toast.LENGTH_SHORT).show();
+		if (list!=null) {
+			if (list.isCreated()) {
+				MyListAdapter myAdapter = (MyListAdapter) list.listView.getAdapter();
+				
+				myAdapter.setNewData(wifiManager.getScanResults());
+			}
 			
-			listAdapter.setNewData(results);
+		} else if (trackingFragment!=null) {
+			if (trackingFragment.isCreated()) {
+				
+			}
+			
 		} else {
-			List<ScanResult> results = wifiManager.getScanResults();
-			ScanResult tracked = null;
-			
-			for (ScanResult res: results) {
-				if (res.BSSID.equals(this.result.BSSID)) {
-					tracked = res;
-				}
-			}
-			
-			TextView textView = (TextView) activity.findViewById(R.id.target_data_output);
-			TextView textView2 = (TextView) activity.findViewById(R.id.target_network);
-			if (tracked!=null) { 
-				textView2.setText(tracked.SSID);
-				textView.setText("Signal Strength: " + WifiManager.calculateSignalLevel(tracked.level, 100) + "%");
-			} else {
-				Toast.makeText(context, "tracked==null", Toast.LENGTH_SHORT).show();
-			}
+			Toast.makeText(context, "recieved but not ready", Toast.LENGTH_SHORT).show();
 		}
+		
 	}
 
 }

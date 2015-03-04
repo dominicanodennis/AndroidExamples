@@ -12,11 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-/*
- * Ein eigener Listenadapter kann verwendet werden um die Daten
- * die du in eine Liste steckst wieder raus zu holen ohne sich
- * einen Arm au zu reiﬂen.
- */
 public class MyListAdapter extends ArrayAdapter<ScanResult> {
 	
 	List<ScanResult> data;

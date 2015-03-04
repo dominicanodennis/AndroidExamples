@@ -1,11 +1,8 @@
 package de.nikolaipreugschat.reciver;
 
-import java.util.List;
-
 import de.nikolaipreugschat.adapters.MyListAdapter;
 import de.nikolaipreugschat.fragments.MyListFragment;
 import de.nikolaipreugschat.fragments.WifiTrackingFragment;
-import de.nikolaipreugschat.main.R;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -13,7 +10,6 @@ import android.net.wifi.ScanResult;
 import android.net.wifi.WifiManager;
 import android.support.v7.app.ActionBarActivity;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class MyBroadcastReciever extends BroadcastReceiver {
